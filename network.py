@@ -9,7 +9,6 @@ class Network:
     def graph(self, nodes, edges):
         for i in nodes:
             self.grp.add_node(str(i[0]), sval=float(i[1]))
-
         for i in edges:
             self.grp.add_edge(str(i[0]), str(i[1]), weight=float(i[2]))
 
