@@ -15,9 +15,9 @@ read.edges()
 
 while True:
     print('''
-=========================================
+==========================================
 Major Assignment #2 - Consensus Algorithm
-=========================================
+==========================================
 1. Membentuk Graph
 2. Membentuk Spanning Tree
 3. Mendapatkan Articulation Point
@@ -33,7 +33,7 @@ Major Assignment #2 - Consensus Algorithm
         network.graph(read.list_nodes, read.list_edges)
         print(network.grp)
         # Membentuk graph
-        plot.graph(network.grp)
+        plot.graph(network.grp, input_pilihan)
     elif input_pilihan == 2:
         # Inisiasi graph
         network.graph(read.list_nodes, read.list_edges)
@@ -41,7 +41,7 @@ Major Assignment #2 - Consensus Algorithm
         network.spanning_tree(network.grp)
         print(network.spn_tree)
         # Membentuk spanning tree
-        plot.graph(network.spn_tree)
+        plot.graph(network.spn_tree, input_pilihan)
     elif input_pilihan == 3:
         # Inisiasi graph
         network.graph(read.list_nodes, read.list_edges)

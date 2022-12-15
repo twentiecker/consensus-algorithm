@@ -17,12 +17,12 @@ class Network:
 
     def articulation(self, grp):
         list_articulation = list(nx.articulation_points(grp))
-        print(f"\nArticulation point(s) dari graph:")
+        print(f"\nDaftar node yang menjadi Articulation Point:")
         for articulation in list_articulation:
             print(articulation)
 
     def bridge(self, grp):
         list_bridges = list(nx.bridges(grp))
-        print(f"\nBridge edge(s) dari graph:")
+        print(f"\nDaftar edge yang menjadi Bridge:")
         for bridge in list_bridges:
             print(f"{bridge[0]}-{bridge[1]}")

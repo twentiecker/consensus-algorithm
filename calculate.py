@@ -4,6 +4,9 @@ class Calculate:
         self.iterasi = 1
 
     def consensus(self, spn_tree):
+        self.list_consensus = []
+        self.iterasi = 1
+
         def average(list_input):
             n = len(list_input)
             total = 0
@@ -12,16 +15,14 @@ class Calculate:
             avg = total / n
             return avg
 
-        input_threshold = input("Masukkan threshold penghitungan konsensus: ")
+        input_threshold = input("Tentukan nilai threshold untuk penghitungan konsensus: ")
         threshold = float(input_threshold)
         dict_iterasi = {}
         list_temp = []
 
-        spn_tree1 = spn_tree
-        print(f"spn_tree.nodes: {spn_tree.nodes}")  # mendapatkan seluruh node
+        spn_tree_base = spn_tree
         for u in spn_tree.nodes:
             list_temp.append(spn_tree.nodes[u]['sval'])  # sval untuk mendapatkan nilai skalar tiap node
-        print(f"list_temp: {list_temp}")
         self.list_consensus.append(list_temp)
         while True:
             list_avg = []
@@ -32,7 +33,6 @@ class Calculate:
                     if spn_tree.has_edge(u, v):
                         y = spn_tree.nodes[v]['sval']
                         dict_iterasi[u].append(y)
-            print(f"dict_iterasi: {dict_iterasi}")
             for u in spn_tree.nodes:
                 avg_u = average(dict_iterasi[u])
                 dict_iterasi[u] = avg_u
@@ -44,9 +44,10 @@ class Calculate:
             if ((max(list_avg)) - (min(list_avg))) <= threshold:
                 break
             self.iterasi += 1
-        print(f"\nKonsensus pada iterasi ke-{self.iterasi}, dengan nilai Skalar tiap node sebagai berikut:")
+        print(
+            f"\nKonsensus terbentuk pada iterasi ke-{self.iterasi}. \nBerikut rincian nilai skalar hasil konsensus untuk setiap node:")
         list_sf = []
-        for i in spn_tree1.nodes:
+        for i in spn_tree_base.nodes:
             print(f"{i}: {dict_iterasi[i]}")
             list_sf.append(dict_iterasi[i])
-        print(f"\nRata-rata nilai Skalar semua node = {average(list_sf)}")
+        print(f"\nRata-rata nilai skalar = {average(list_sf)}")
